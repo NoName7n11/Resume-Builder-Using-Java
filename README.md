@@ -2,6 +2,8 @@
 
 A full-featured resume builder application with JavaFX desktop UI and Spring Boot REST API. Create, customize, and export professional resumes in multiple formats (PDF, DOCX, TXT).
 
+![Java Resume Builder Interface](image.png)
+
 ## ✨ Features
 
 ### Core Features
