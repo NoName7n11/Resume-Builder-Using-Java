@@ -1,436 +1,374 @@
-# Java Resume Builder - Project Summary
+# Java Resume Builder
 
-## 📋 Overview
+A comprehensive resume builder application built with Java, featuring both a JavaFX desktop interface and a Spring Boot REST API backend. Create, customize, and export professional resumes in multiple formats (PDF, DOCX, TXT).
 
-I've created a comprehensive **Java Resume Builder** application based on your XML specifications. This is a full-stack application featuring:
+## 🚀 Features
 
-- **Desktop Application**: JavaFX-based rich UI
-- **Web Backend**: Spring Boot REST API
-- **Multiple Export Formats**: PDF, DOCX, and TXT
-- **Database Persistence**: JPA/Hibernate with H2/PostgreSQL support
-- **Professional Templates**: 3 customizable resume layouts
+### Core Features (MVP)
+- ✅ **User Data Entry**: Intuitive forms for all resume sections
+  - Personal Information (Name, Contact, Links)
+  - Professional Summary/Objective
+  - Education (Degree, University, GPA, Dates)
+  - Work Experience (Company, Role, Responsibilities, Achievements)
+  - Skills (Categorized by type)
+  - Projects (with technologies and highlights)
+  
+- ✅ **Template Selection**: Choose from 3 professional templates
+  - Professional (Clean and traditional)
+  - Modern (Contemporary with accent colors)
+  - Creative (Visually engaging)
+  
+- ✅ **Real-time Preview**: See changes as you type
+  
+- ✅ **PDF Export**: High-quality PDF generation using Apache PDFBox
 
-## ✅ Implemented Features
+### Usability & Customization
+- ✅ **User Accounts**: Secure authentication with email/password
+- ✅ **Multiple Resume Versions**: Save and manage multiple resumes
+- ✅ **Dynamic Section Management**:
+  - Add custom sections (Certifications, Publications, Volunteer Work)
+  - Reorder sections via drag-and-drop
+  - Toggle section visibility
+  
+- ✅ **Template Customization**:
+  - Change primary/secondary colors
+  - Adjust font family and size
+  - Customize margins and spacing
+  - Control section order
 
-### Core Features (MVP) - 100% Complete
-✅ **User Data Entry**
-   - Personal Information (name, contact, social links)
-   - Professional Summary/Objective
-   - Education (degree, university, GPA, dates)
-   - Work Experience (company, role, responsibilities)
-   - Skills (categorized)
-   - Projects (with technologies and highlights)
+### Advanced Features
+- ✅ **Import from JSON Resume**: Standard JSON Resume format support
+- ✅ **Multiple Export Formats**: PDF, DOCX (Word), and TXT
+- ✅ **Shareable Links**: Generate private URLs for resume sharing
+- ✅ **Database Persistence**: Save all resume data with JPA/Hibernate
 
-✅ **Template Selection**
-   - Professional Template (traditional, clean)
-   - Modern Template (contemporary with colors)
-   - Creative Template (visually engaging)
+## 🛠️ Technology Stack
 
-✅ **Real-time Preview**
-   - HTML preview in JavaFX WebView
-   - Updates as you type
+### Backend
+- **Java 17**: Modern Java with latest features
+- **Spring Boot 3.1.5**: Web framework and dependency injection
+- **Spring Data JPA**: Database access and ORM
+- **Spring Security**: Authentication and authorization
+- **H2 Database**: Development database (easily switch to PostgreSQL)
+- **Lombok**: Reduce boilerplate code
 
-✅ **PDF Export**
-   - High-quality PDF generation using Apache PDFBox
-   - Professional formatting
-   - Customizable layout
+### Frontend
+- **JavaFX 21**: Rich desktop UI
+- **FXML**: Declarative UI design
 
-### Usability & Customization - 100% Complete
-✅ **User Accounts**
-   - User registration and authentication
-   - Secure password storage (BCrypt)
-   - Support for OAuth providers (Google, GitHub, LinkedIn)
+### Document Generation
+- **Apache PDFBox 3.0**: PDF creation
+- **Apache POI 5.2**: Microsoft Word document generation
 
-✅ **Multiple Resume Versions**
-   - Save unlimited resume versions
-   - Copy/duplicate resumes
-   - Version management
+### Additional Libraries
+- **Jackson**: JSON processing for import/export
+- **JWT (jjwt)**: Token-based authentication
+- **Maven**: Build and dependency management
 
-✅ **Dynamic Section Management**
-   - Add custom sections (Certifications, Publications, etc.)
-   - Reorder sections
-   - Toggle section visibility
-   - Display order control
-
-✅ **Template Customization**
-   - Primary/secondary colors
-   - Font family selection
-   - Font size adjustment
-   - Margins and spacing control
-   - Section reordering
-
-### Advanced Features - 100% Complete
-✅ **Import from JSON Resume**
-   - Standard JSON Resume format support
-   - Automatic data parsing and population
-   - LinkedIn profile data structure support
-
-✅ **Multiple Export Formats**
-   - PDF (Apache PDFBox)
-   - DOCX (Apache POI)
-   - Plain Text (TXT)
-
-✅ **Shareable Links**
-   - Generate unique, private URLs
-   - Token-based access
-   - Enable/disable sharing
-
-✅ **Additional Features**
-   - REST API for all operations
-   - H2 database for development
-   - PostgreSQL support for production
-   - Security with Spring Security
-   - JWT authentication ready
-
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```
 Java_Project/
-│
 ├── src/main/java/com/resumebuilder/
-│   ├── JavaResumeBuilderApplication.java    # Main application
-│   │
-│   ├── model/                                # Domain Entities
-│   │   ├── User.java                         # User account with roles
-│   │   ├── Resume.java                       # Main resume entity
-│   │   ├── PersonalInfo.java                 # Contact information
-│   │   ├── Education.java                    # Education entries
-│   │   ├── WorkExperience.java               # Work history
-│   │   ├── Skill.java                        # Skills with categories
-│   │   ├── Project.java                      # Project entries
-│   │   ├── CustomSection.java                # Custom resume sections
-│   │   └── ResumeSettings.java               # Customization settings
-│   │
-│   ├── repository/                            # Data Access Layer (JPA)
+│   ├── JavaResumeBuilderApplication.java      # Main application entry point
+│   ├── model/                                   # Domain entities
+│   │   ├── User.java                           # User account
+│   │   ├── Resume.java                         # Resume document
+│   │   ├── PersonalInfo.java                   # Contact information
+│   │   ├── Education.java                      # Education entry
+│   │   ├── WorkExperience.java                 # Work history
+│   │   ├── Skill.java                          # Skills
+│   │   ├── Project.java                        # Projects
+│   │   ├── CustomSection.java                  # Custom sections
+│   │   └── ResumeSettings.java                 # Customization settings
+│   ├── repository/                              # Data access layer
 │   │   ├── UserRepository.java
 │   │   ├── ResumeRepository.java
-│   │   ├── EducationRepository.java
-│   │   ├── WorkExperienceRepository.java
-│   │   ├── SkillRepository.java
-│   │   ├── ProjectRepository.java
-│   │   └── CustomSectionRepository.java
-│   │
-│   ├── service/                               # Business Logic
-│   │   ├── UserService.java                  # User management
-│   │   ├── ResumeService.java                # Resume CRUD operations
+│   │   └── ... (other repositories)
+│   ├── service/                                 # Business logic
+│   │   ├── UserService.java
+│   │   ├── ResumeService.java
 │   │   ├── export/
-│   │   │   ├── PdfExportService.java         # PDF generation
-│   │   │   └── DocxExportService.java        # Word document export
+│   │   │   ├── PdfExportService.java           # PDF generation
+│   │   │   └── DocxExportService.java          # Word document generation
 │   │   └── importer/
-│   │       └── JsonResumeImporter.java       # JSON Resume import
-│   │
-│   ├── controller/                            # REST API
-│   │   └── ResumeController.java             # Resume endpoints
-│   │
-│   ├── config/                                # Configuration
-│   │   └── SecurityConfig.java               # Security setup
-│   │
-│   └── ui/controller/                         # JavaFX UI
-│       └── ResumeEditorController.java       # Main UI controller
-│
+│   │       └── JsonResumeImporter.java         # JSON Resume import
+│   ├── controller/                              # REST API endpoints
+│   │   └── ResumeController.java
+│   └── config/                                  # Configuration classes
+│       └── SecurityConfig.java
 ├── src/main/resources/
-│   ├── application.properties                 # App configuration
-│   └── application-prod.properties            # Production settings
-│
-├── pom.xml                                    # Maven dependencies
-├── README.md                                  # Full documentation
-├── QUICKSTART.md                              # Quick start guide
-└── .gitignore                                 # Git ignore rules
+│   ├── application.properties                   # Application configuration
+│   └── application-prod.properties              # Production settings
+├── pom.xml                                      # Maven dependencies
+└── README.md                                    # This file
 ```
 
-## 🔧 Technologies Used
+## 🚦 Getting Started
 
-| Category | Technology | Version | Purpose |
-|----------|-----------|---------|---------|
-| **Language** | Java | 17 | Main programming language |
-| **Framework** | Spring Boot | 3.1.5 | Web framework & DI |
-| **UI** | JavaFX | 21.0.1 | Desktop interface |
-| **Database** | H2 / PostgreSQL | Latest | Data persistence |
-| **ORM** | Spring Data JPA | 3.1.5 | Database access |
-| **Security** | Spring Security | 3.1.5 | Authentication |
-| **PDF** | Apache PDFBox | 3.0.0 | PDF generation |
-| **Word** | Apache POI | 5.2.5 | DOCX export |
-| **JSON** | Jackson | Latest | JSON processing |
-| **Auth** | JWT (jjwt) | 0.12.3 | Token authentication |
-| **Build** | Maven | 3.6+ | Build automation |
-
-## 🚀 Getting Started
-
-### 1. Prerequisites
+### Prerequisites
 - Java 17 or higher
 - Maven 3.6+
 - (Optional) PostgreSQL for production
 
-### 2. Build the Project
+### Installation
+
+1. **Clone the repository**
 ```powershell
-cd C:\Users\novan\Desktop\Java_Project
+cd Desktop\Java_Project
+```
+
+2. **Build the project**
+```powershell
 mvn clean install
 ```
 
-### 3. Run the Application
+3. **Run the application**
 ```powershell
 # Run Spring Boot backend
 mvn spring-boot:run
 
-# Or run JavaFX desktop UI
+# Or run JavaFX desktop application
 mvn javafx:run
 ```
 
-### 4. Access
-- Web: http://localhost:8080
-- H2 Console: http://localhost:8080/h2-console
-- API: http://localhost:8080/api/
+The application will start on `http://localhost:8080`
 
-## 📡 API Endpoints
+### Database Configuration
 
-### Resume Management
-```
-POST   /api/resumes                    # Create resume
-GET    /api/resumes/{id}               # Get resume
-GET    /api/resumes/user/{userId}      # Get user's resumes
-PUT    /api/resumes/{id}               # Update resume
-DELETE /api/resumes/{id}               # Delete resume
-```
+#### Development (H2 - Default)
+The application uses H2 in-memory database by default. Access the H2 console at:
+- URL: `http://localhost:8080/h2-console`
+- JDBC URL: `jdbc:h2:file:./data/resumebuilder`
+- Username: `sa`
+- Password: (empty)
 
-### Export Functions
-```
-GET /api/resumes/{id}/export/pdf       # Export as PDF
-GET /api/resumes/{id}/export/docx      # Export as DOCX
-GET /api/resumes/{id}/export/txt       # Export as text
+#### Production (PostgreSQL)
+1. Create a PostgreSQL database:
+```sql
+CREATE DATABASE resumebuilder;
+CREATE USER resumebuilder_user WITH PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE resumebuilder TO resumebuilder_user;
 ```
 
-### Sharing
+2. Update `application-prod.properties`:
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/resumebuilder
+spring.datasource.username=resumebuilder_user
+spring.datasource.password=your_password
 ```
-POST /api/resumes/{id}/share           # Generate share link
-POST /api/resumes/{id}/share/disable   # Disable sharing
-GET  /api/resumes/shared/{token}       # View shared resume
+
+3. Run with production profile:
+```powershell
+mvn spring-boot:run -Dspring-boot.run.profiles=prod
+```
+
+## 📖 API Documentation
+
+### Resume Endpoints
+
+#### Create Resume
+```http
+POST /api/resumes
+?userId=1&title=My Resume&description=Software Engineer Resume
+```
+
+#### Get Resume
+```http
+GET /api/resumes/{id}
+```
+
+#### Get User's Resumes
+```http
+GET /api/resumes/user/{userId}
+```
+
+#### Update Resume
+```http
+PUT /api/resumes/{id}
+?title=Updated Title&templateName=modern
+```
+
+#### Delete Resume
+```http
+DELETE /api/resumes/{id}
+```
+
+#### Export as PDF
+```http
+GET /api/resumes/{id}/export/pdf
+```
+
+#### Export as DOCX
+```http
+GET /api/resumes/{id}/export/docx
+```
+
+#### Export as Text
+```http
+GET /api/resumes/{id}/export/txt
+```
+
+#### Generate Share Link
+```http
+POST /api/resumes/{id}/share
+```
+
+#### View Shared Resume
+```http
+GET /api/resumes/shared/{token}
 ```
 
 ## 🎨 Resume Templates
 
-### 1. Professional Template
+### Professional Template
 - Clean, traditional layout
-- Black and white
-- Perfect for corporate jobs
-- Emphasis on content
+- Black and white color scheme
+- Perfect for corporate positions
+- Emphasizes content over design
 
-### 2. Modern Template
+### Modern Template
 - Contemporary design
-- Customizable colors
-- Good for tech industry
+- Customizable accent colors
 - Balanced visual appeal
+- Suitable for tech industry
 
-### 3. Creative Template
-- Unique layout
+### Creative Template
+- Unique layout options
 - Bold typography
 - Color accents
 - Ideal for creative fields
 
-## 💾 Database Schema
+## 📥 Importing Resumes
 
-**Core Tables:**
-- `users` - User accounts
-- `user_roles` - User role assignments
-- `resumes` - Resume documents
-- `personal_info` - Contact information
-- `education` - Education entries
-- `work_experience` - Work history
-- `skills` - Skill entries
-- `projects` - Project entries
-- `custom_sections` - Custom resume sections
+### JSON Resume Format
+Import resumes using the standard [JSON Resume](https://jsonresume.org/) format:
 
-**Relationships:**
-- One User → Many Resumes
-- One Resume → One PersonalInfo
-- One Resume → Many Education/WorkExperience/Skills/Projects/CustomSections
+```json
+{
+  "basics": {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "(555) 123-4567",
+    "url": "https://johndoe.com",
+    "location": {
+      "city": "San Francisco",
+      "region": "CA",
+      "postalCode": "94102",
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "url": "https://linkedin.com/in/johndoe"
+      },
+      {
+        "network": "GitHub",
+        "url": "https://github.com/johndoe"
+      }
+    ]
+  },
+  "work": [...],
+  "education": [...],
+  "skills": [...],
+  "projects": [...]
+}
+```
 
 ## 🔐 Security Features
 
-✅ Password encryption (BCrypt)
-✅ JWT token authentication
-✅ Role-based access control
-✅ CORS configuration
-✅ SQL injection protection (JPA)
-✅ XSS protection headers
-✅ OAuth2 support ready (Google, GitHub, LinkedIn)
-
-## 📊 Key Features by Priority
-
-### Must-Have (Implemented)
-- [x] User data entry forms
-- [x] Template selection
-- [x] PDF export
-- [x] Database persistence
-- [x] User accounts
-
-### Nice-to-Have (Implemented)
-- [x] Multiple resume versions
-- [x] Template customization
-- [x] DOCX export
-- [x] JSON import
-- [x] Shareable links
-- [x] REST API
-
-### Future Enhancements (Not Implemented)
-- [ ] AI-powered content suggestions
-- [ ] Keyword analysis for job descriptions
-- [ ] Real LinkedIn API integration
-- [ ] ATS optimization scoring
-- [ ] Email resume feature
-- [ ] Mobile apps
-- [ ] Cloud storage integration
-- [ ] Collaboration features
+- Password encryption using BCrypt
+- JWT-based authentication
+- CORS configuration for cross-origin requests
+- SQL injection protection via JPA
+- XSS protection headers
 
 ## 🧪 Testing
 
-The project is set up for testing with:
-- JUnit 5 for unit tests
-- Spring Boot Test for integration tests
-- Test coverage with JaCoCo
-
-Run tests:
+Run tests with:
 ```powershell
 mvn test
 ```
 
-## 📦 Deployment
+## 📦 Building for Production
 
-### Development
+Create an executable JAR:
 ```powershell
-mvn spring-boot:run
+mvn clean package
 ```
 
-### Production
+Run the JAR:
 ```powershell
-# Build
-mvn clean package -Dspring.profiles.active=prod
-
-# Run
 java -jar target/java-resume-builder-1.0.0.jar
 ```
 
-## 🐛 Known Issues & Solutions
+## 🔧 Configuration Options
 
-### Lombok Errors in IDE
-**Issue**: IDE shows compilation errors for @Builder, @Data, etc.
-**Solution**: Install Lombok plugin and enable annotation processing
+Edit `application.properties` to customize:
+- Database connection
+- JWT secret and expiration
+- File upload limits
+- Export directory locations
+- Template directories
+- Maximum resume versions per user
 
-### Database Locked
-**Issue**: "Database is locked" error
-**Solution**: Stop all running instances and delete ./data directory
+## 🤝 Contributing
 
-### Port Already in Use
-**Issue**: Port 8080 is occupied
-**Solution**: Change port in application.properties: `server.port=8081`
+This is an educational project. Feel free to fork and enhance it with:
+- Additional resume templates
+- AI-powered content suggestions
+- LinkedIn API integration
+- ATS (Applicant Tracking System) optimization
+- Multi-language support
+- Cloud storage integration
 
-## 📚 Documentation Files
+## 📝 License
 
-1. **README.md** - Complete project documentation
-2. **QUICKSTART.md** - Quick start guide for developers
-3. **PROJECT_SUMMARY.md** (this file) - Project overview
+This project is created for educational purposes. Feel free to use and modify as needed.
 
-## 🎯 Educational Value
+## 🎯 Future Enhancements
 
-This project demonstrates:
-- **Design Patterns**: Builder, Repository, Service Layer
-- **Best Practices**: Clean architecture, separation of concerns
-- **Modern Java**: Java 17 features, Lombok, Streams
-- **Spring Ecosystem**: Boot, Data JPA, Security
-- **Database Design**: JPA entities, relationships
-- **API Design**: RESTful endpoints
-- **Document Generation**: PDF and Word creation
-- **UI Development**: JavaFX desktop applications
+- [ ] AI-powered bullet point suggestions
+- [ ] Keyword analysis for job descriptions
+- [ ] LinkedIn profile import
+- [ ] ATS optimization scoring
+- [ ] Collaboration features
+- [ ] Version history and rollback
+- [ ] Email resume directly from app
+- [ ] Mobile app (Android/iOS)
+- [ ] Cloud sync
+- [ ] Resume analytics
 
 ## 💡 Tips for Use
 
 1. **Multiple Versions**: Create separate resumes for different job types
-2. **Templates**: Choose based on your industry
-3. **Content**: Use action verbs and quantify achievements
-4. **Skills**: Categorize properly (Technical, Soft Skills, etc.)
-5. **Customization**: Match colors to personal brand
-6. **Export**: Always review PDF before sending
+2. **Template Selection**: Choose templates based on your industry
+3. **Content**: Use action verbs and quantifiable achievements
+4. **Skills**: Categorize skills (Technical, Soft Skills, Languages, etc.)
+5. **Customization**: Adjust colors and fonts to match your personal brand
+6. **Proofreading**: Export to PDF and review before sending
 
-## 🔮 Future Development Ideas
+## 🐛 Troubleshooting
 
-1. **AI Integration**: GPT-powered content suggestions
-2. **ATS Optimization**: Score resumes for ATS compatibility
-3. **LinkedIn Sync**: Real-time LinkedIn profile import
-4. **Analytics**: Track resume views and downloads
-5. **Collaboration**: Share and review with mentors
-6. **Version Control**: Git-like version history
-7. **Templates**: Add more industry-specific templates
-8. **Multi-language**: i18n support
-9. **Cloud Sync**: Store resumes in cloud
-10. **Mobile App**: React Native or Flutter companion
+### Lombok Errors in IDE
+If you see compilation errors related to Lombok:
+1. Install Lombok plugin for your IDE
+2. Enable annotation processing
+3. Rebuild the project
 
-## 📝 Code Quality
+### Database Connection Issues
+- Check if H2 database file has proper permissions
+- For PostgreSQL, verify connection credentials
+- Check firewall settings
 
-The codebase follows:
-- Java naming conventions
-- SOLID principles
-- Clean code practices
-- Proper exception handling
-- Comprehensive documentation
-- Consistent formatting
+### JavaFX Not Loading
+- Ensure JavaFX libraries are in your Maven dependencies
+- Check Java version compatibility (Java 17+)
 
-## 🤝 Contributing
+## 📧 Contact
 
-This is an educational project. To enhance it:
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📄 License
-
-Educational project - Free to use and modify
-
-## 🎓 Learning Outcomes
-
-By studying this project, you'll learn:
-- Full-stack Java development
-- Spring Boot application development
-- JavaFX desktop UI creation
-- Database design with JPA
-- REST API implementation
-- Document generation (PDF/Word)
-- Security implementation
-- Build automation with Maven
-- Software architecture patterns
+For questions or suggestions about this project, please open an issue on the repository.
 
 ---
 
-## 📞 Quick Reference
-
-**Build**: `mvn clean install`
-**Run**: `mvn spring-boot:run`
-**Test**: `mvn test`
-**Package**: `mvn clean package`
-**JavaFX**: `mvn javafx:run`
-
-**Default URLs**:
-- Application: http://localhost:8080
-- H2 Console: http://localhost:8080/h2-console
-- API Docs: http://localhost:8080/api/
-
-**Database**:
-- URL: `jdbc:h2:file:./data/resumebuilder`
-- User: `sa`
-- Password: (empty)
-
----
-
-**Project Status**: ✅ Complete and Ready for Use
-
-**Last Updated**: November 4, 2025
-
-**Total Lines of Code**: ~3,500+
-
-**Total Files Created**: 25+
-
-**Estimated Development Time**: 8-12 hours for full implementation
-
----
-
-This project serves as an excellent portfolio piece demonstrating comprehensive Java development skills! 🚀
+**Built with ❤️ using Java, Spring Boot, and JavaFX**
