@@ -1,103 +1,70 @@
-# Java Resume Builder - Project Summary
+# Java Resume Builder
 
-## 📋 Overview
+A full-featured resume builder application with JavaFX desktop UI and Spring Boot REST API. Create, customize, and export professional resumes in multiple formats (PDF, DOCX, TXT).
 
-I've created a comprehensive **Java Resume Builder** application based on your XML specifications. This is a full-stack application featuring:
+## ✨ Features
 
-- **Desktop Application**: JavaFX-based rich UI
-- **Web Backend**: Spring Boot REST API
-- **Multiple Export Formats**: PDF, DOCX, and TXT
-- **Database Persistence**: JPA/Hibernate with H2/PostgreSQL support
-- **Professional Templates**: 3 customizable resume layouts
+### Core Features
+- 📝 **Resume Data Entry**: Comprehensive forms for all resume sections
+  - Personal information, professional summary, education, work experience, skills, and projects
+- 🎨 **3 Professional Templates**: Choose from Modern, Professional, or Creative designs
+- 👁️ **Real-time Preview**: See changes instantly as you type
+- 📥 **JSON Resume Import**: Support for standard JSON Resume format
+- 💾 **Multiple Versions**: Save and manage unlimited resume versions
+- 🔒 **User Authentication**: Secure accounts with email/password
 
-## ✅ Implemented Features
+### Customization & Export
+- 🎯 **Template Customization**: Adjust colors, fonts, sizes, margins, and section order
+- 📄 **Multiple Export Formats**: PDF, DOCX (Word), and TXT
+- 📋 **Custom Sections**: Add certifications, publications, volunteer work, etc.
+- 🔗 **Shareable Links**: Generate private URLs for resume sharing
+- 🌐 **REST API**: Full API for programmatic access
 
-### Core Features (MVP) - 100% Complete
-✅ **User Data Entry**
-   - Personal Information (name, contact, social links)
-   - Professional Summary/Objective
-   - Education (degree, university, GPA, dates)
-   - Work Experience (company, role, responsibilities)
-   - Skills (categorized)
-   - Projects (with technologies and highlights)
+## 🛠️ Technology Stack
 
-✅ **Template Selection**
-   - Professional Template (traditional, clean)
-   - Modern Template (contemporary with colors)
-   - Creative Template (visually engaging)
+- **Backend**: Java 17, Spring Boot 3.1.5, Spring Data JPA, Spring Security
+- **Frontend**: JavaFX 21 (Desktop UI)
+- **Database**: H2 (dev) / PostgreSQL (production)
+- **Document Generation**: Apache PDFBox, Apache POI
+- **Build Tool**: Maven
+- **Authentication**: JWT, BCrypt
 
-✅ **Real-time Preview**
-   - HTML preview in JavaFX WebView
-   - Updates as you type
+## 🚀 Quick Start
 
-✅ **PDF Export**
-   - High-quality PDF generation using Apache PDFBox
-   - Professional formatting
-   - Customizable layout
+### Prerequisites
+- Java 17+
+- Maven 3.6+
 
-### Usability & Customization - 100% Complete
-✅ **User Accounts**
-   - User registration and authentication
-   - Secure password storage (BCrypt)
-   - Support for OAuth providers (Google, GitHub, LinkedIn)
+### Installation
 
-✅ **Multiple Resume Versions**
-   - Save unlimited resume versions
-   - Copy/duplicate resumes
-   - Version management
+```powershell
+# Clone and navigate to project
+cd Resume_Builder
 
-✅ **Dynamic Section Management**
-   - Add custom sections (Certifications, Publications, etc.)
-   - Reorder sections
-   - Toggle section visibility
-   - Display order control
+# Build the project
+mvn clean install
 
-✅ **Template Customization**
-   - Primary/secondary colors
-   - Font family selection
-   - Font size adjustment
-   - Margins and spacing control
-   - Section reordering
+# Run the application
+mvn spring-boot:run
+```
 
-### Advanced Features - 100% Complete
-✅ **Import from JSON Resume**
-   - Standard JSON Resume format support
-   - Automatic data parsing and population
-   - LinkedIn profile data structure support
-
-✅ **Multiple Export Formats**
-   - PDF (Apache PDFBox)
-   - DOCX (Apache POI)
-   - Plain Text (TXT)
-
-✅ **Shareable Links**
-   - Generate unique, private URLs
-   - Token-based access
-   - Enable/disable sharing
-
-✅ **Additional Features**
-   - REST API for all operations
-   - H2 database for development
-   - PostgreSQL support for production
-   - Security with Spring Security
-   - JWT authentication ready
+The application will start on `http://localhost:8080`
 
 ## 📂 Project Structure
 
 ```
-Java_Project/
-│
 ├── src/main/java/com/resumebuilder/
-│   ├── JavaResumeBuilderApplication.java    # Main application
-│   │
-│   ├── model/                                # Domain Entities
-│   │   ├── User.java                         # User account with roles
-│   │   ├── Resume.java                       # Main resume entity
-│   │   ├── PersonalInfo.java                 # Contact information
-│   │   ├── Education.java                    # Education entries
-│   │   ├── WorkExperience.java               # Work history
-│   │   ├── Skill.java                        # Skills with categories
-│   │   ├── Project.java                      # Project entries
+│   ├── model/                 # Domain entities (User, Resume, Education, etc.)
+│   ├── repository/            # Data access layer
+│   ├── service/               # Business logic
+│   │   ├── export/            # PDF and DOCX export services
+│   │   └── importer/          # JSON Resume import
+│   ├── controller/            # REST API endpoints
+│   ├── ui/controller/         # JavaFX UI controllers
+│   └── config/                # Configuration (Security, etc.)
+├── src/main/resources/
+│   └── fxml/                  # JavaFX UI definitions
+└── pom.xml                    # Maven configuration
 │   │   ├── CustomSection.java                # Custom resume sections
 │   │   └── ResumeSettings.java               # Customization settings
 │   │
@@ -175,11 +142,6 @@ mvn spring-boot:run
 # Or run JavaFX desktop UI
 mvn javafx:run
 ```
-
-### 4. Access
-- Web: http://localhost:8080
-- H2 Console: http://localhost:8080/h2-console
-- API: http://localhost:8080/api/
 
 ## 📡 API Endpoints
 
@@ -329,27 +291,6 @@ java -jar target/java-resume-builder-1.0.0.jar
 2. **QUICKSTART.md** - Quick start guide for developers
 3. **PROJECT_SUMMARY.md** (this file) - Project overview
 
-## 🎯 Educational Value
-
-This project demonstrates:
-- **Design Patterns**: Builder, Repository, Service Layer
-- **Best Practices**: Clean architecture, separation of concerns
-- **Modern Java**: Java 17 features, Lombok, Streams
-- **Spring Ecosystem**: Boot, Data JPA, Security
-- **Database Design**: JPA entities, relationships
-- **API Design**: RESTful endpoints
-- **Document Generation**: PDF and Word creation
-- **UI Development**: JavaFX desktop applications
-
-## 💡 Tips for Use
-
-1. **Multiple Versions**: Create separate resumes for different job types
-2. **Templates**: Choose based on your industry
-3. **Content**: Use action verbs and quantify achievements
-4. **Skills**: Categorize properly (Technical, Soft Skills, etc.)
-5. **Customization**: Match colors to personal brand
-6. **Export**: Always review PDF before sending
-
 ## 🔮 Future Development Ideas
 
 1. **AI Integration**: GPT-powered content suggestions
@@ -385,52 +326,3 @@ This is an educational project. To enhance it:
 ## 📄 License
 
 Educational project - Free to use and modify
-
-## 🎓 Learning Outcomes
-
-By studying this project, you'll learn:
-- Full-stack Java development
-- Spring Boot application development
-- JavaFX desktop UI creation
-- Database design with JPA
-- REST API implementation
-- Document generation (PDF/Word)
-- Security implementation
-- Build automation with Maven
-- Software architecture patterns
-
----
-
-## 📞 Quick Reference
-
-**Build**: `mvn clean install`
-**Run**: `mvn spring-boot:run`
-**Test**: `mvn test`
-**Package**: `mvn clean package`
-**JavaFX**: `mvn javafx:run`
-
-**Default URLs**:
-- Application: http://localhost:8080
-- H2 Console: http://localhost:8080/h2-console
-- API Docs: http://localhost:8080/api/
-
-**Database**:
-- URL: `jdbc:h2:file:./data/resumebuilder`
-- User: `sa`
-- Password: (empty)
-
----
-
-**Project Status**: ✅ Complete and Ready for Use
-
-**Last Updated**: November 4, 2025
-
-**Total Lines of Code**: ~3,500+
-
-**Total Files Created**: 25+
-
-**Estimated Development Time**: 8-12 hours for full implementation
-
----
-
-This project serves as an excellent portfolio piece demonstrating comprehensive Java development skills! 🚀
