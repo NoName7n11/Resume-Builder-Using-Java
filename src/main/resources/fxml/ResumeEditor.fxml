@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane xmlns="http://javafx.com/javafx/22.0.2" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.resumebuilder.ui.controller.ResumeEditorController"
+            prefHeight="800.0" prefWidth="1200.0">
+    
+    <!-- Top Menu Bar -->
+    <top>
+        <MenuBar>
+            <Menu text="File">
+                <MenuItem text="New Resume"/>
+                <MenuItem text="Load Resume"/>
+                <MenuItem text="Save Resume"/>
+                <SeparatorMenuItem/>
+                <MenuItem text="Exit"/>
+            </Menu>
+            <Menu text="Export">
+                <MenuItem text="Export as PDF"/>
+                <MenuItem text="Export as DOCX"/>
+            </Menu>
+            <Menu text="Help">
+                <MenuItem text="About"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    
+    <!-- Main Content Area -->
+    <center>
+        <SplitPane dividerPositions="0.5">
+            <!-- Left side: Form -->
+            <ScrollPane fitToWidth="true" fitToHeight="true">
+                <VBox spacing="15" style="-fx-padding: 20;">
+                
+                <!-- Personal Information Section -->
+                <TitledPane text="Personal Information" collapsible="false">
+                    <GridPane hgap="10" vgap="10" style="-fx-padding: 10;">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150"/>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="200" prefWidth="300"/>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="100" prefWidth="150"/>
+                            <ColumnConstraints hgrow="ALWAYS" minWidth="200" prefWidth="300"/>
+                        </columnConstraints>
+                        
+                        <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <TextField fx:id="firstNameField" promptText="Enter first name" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        
+                        <Label text="Last Name:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                        <TextField fx:id="lastNameField" promptText="Enter last name" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                        
+                        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <TextField fx:id="emailField" promptText="email@example.com" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        
+                        <Label text="Phone:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <TextField fx:id="phoneField" promptText="(123) 456-7890" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                        
+                        <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                        <TextField fx:id="addressField" promptText="Street address" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        
+                        <Label text="City:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                        <TextField fx:id="cityField" promptText="City" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                        
+                        <Label text="State:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                        <TextField fx:id="stateField" promptText="State" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                        
+                        <Label text="ZIP:" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                        <TextField fx:id="zipField" promptText="ZIP Code" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+                        
+                        <Label text="LinkedIn:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                        <TextField fx:id="linkedInField" promptText="LinkedIn profile URL" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                        
+                        <Label text="GitHub:" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                        <TextField fx:id="githubField" promptText="GitHub profile URL" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+                        
+                        <Label text="Portfolio:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                        <TextField fx:id="portfolioField" promptText="Portfolio website URL" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="3"/>
+                    </GridPane>
+                </TitledPane>
+                
+                <!-- Professional Summary Section -->
+                <TitledPane text="Professional Summary" collapsible="false">
+                    <VBox spacing="5" style="-fx-padding: 10;">
+                        <TextArea fx:id="professionalSummaryArea" 
+                                  promptText="Write a brief professional summary highlighting your key skills and experience..."
+                                  prefRowCount="4"
+                                  wrapText="true"/>
+                    </VBox>
+                </TitledPane>
+                
+                <!-- Template Selection Section -->
+                <TitledPane text="Resume Template" collapsible="false">
+                    <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10;">
+                        <Label text="Select Template:"/>
+                        <ComboBox fx:id="templateComboBox" prefWidth="200"/>
+                    </HBox>
+                </TitledPane>
+                
+                <!-- Education Section -->
+                <TitledPane text="Education" collapsible="false">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <ListView fx:id="educationListView" prefHeight="150"/>
+                        <Button fx:id="addEducationButton" text="Add Education" onAction="#handleAddEducation" prefWidth="150"/>
+                    </VBox>
+                </TitledPane>
+                
+                <!-- Work Experience Section -->
+                <TitledPane text="Work Experience" collapsible="false">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <ListView fx:id="workExperienceListView" prefHeight="150"/>
+                        <Button fx:id="addExperienceButton" text="Add Experience" onAction="#handleAddExperience" prefWidth="150"/>
+                    </VBox>
+                </TitledPane>
+                
+                <!-- Skills Section -->
+                <TitledPane text="Skills" collapsible="false">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <ListView fx:id="skillsListView" prefHeight="100"/>
+                        <Button fx:id="addSkillButton" text="Add Skill" onAction="#handleAddSkill" prefWidth="150"/>
+                    </VBox>
+                </TitledPane>
+                
+                <!-- Projects Section -->
+                <TitledPane text="Projects" collapsible="false">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <ListView fx:id="projectsListView" prefHeight="150"/>
+                        <Button fx:id="addProjectButton" text="Add Project" onAction="#handleAddProject" prefWidth="150"/>
+                    </VBox>
+                </TitledPane>
+                
+                <!-- Action Buttons -->
+                <HBox spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+                    <Button text="New Resume" prefWidth="120"/>
+                    <Button fx:id="saveButton" text="Save Resume" onAction="#handleSave" prefWidth="120" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                    <Button text="Load Resume" prefWidth="120"/>
+                    <Button fx:id="exportPdfButton" text="Export as PDF" onAction="#handleExportPdf" prefWidth="120" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                    <Button fx:id="exportDocxButton" text="Export as DOCX" onAction="#handleExportDocx" prefWidth="120" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                </HBox>
+                
+            </VBox>
+        </ScrollPane>
+        
+        <!-- Right side: Preview -->
+        <VBox style="-fx-padding: 10;">
+            <Label text="Preview" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-padding: 5;"/>
+            <WebView fx:id="previewWebView" prefWidth="400"/>
+        </VBox>
+        
+    </SplitPane>
+    </center>
+    
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox style="-fx-background-color: #f0f0f0; -fx-padding: 5;">
+            <Label text="Ready" style="-fx-padding: 5;"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>
